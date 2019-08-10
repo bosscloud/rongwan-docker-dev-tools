@@ -1,0 +1,45 @@
+# 使用说明 V1.0.1
+# 1. 使用docker-compose  宿主机不需要配置host来发现
+# 2. 无需修改源码，根目录  docker-compose up 即可
+# 3. 静静等待服务启动
+
+version: '2'
+services:
+  rongwan-mysql:
+    build:
+      context: ./
+      dockerfile: ./db/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    container_name: rongwan-mysql
+    image: rongwan-mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./rongwan-mysql:/var/lib/mysql
+    command: --lower_case_table_names=1
+
+  rongwan-zookeeper:
+    image: zookeeper:3.4.13
+    restart: always
+
+  rongwan-redis:
+    image: redis:5.0.4
+    restart: always
+    container_name: rongwan-redis
+    ports:
+      - 6379:6379
+
+  rongwan-minio:
+    image: minio/minio
+    command: server /data
+    ports:
+      - 9000:9000
+    volumes:
+      - ./data:/data
+      - ./config:/root/.minio
+    environment:
+      - MINIO_DOMAIN=rongwan-minio
+      - MINIO_ACCESS_KEY=rongdata
+      - MINIO_SECRET_KEY=rongdata
