@@ -18,16 +18,16 @@ rongwan-docker-dev-tools
 ```
 
 ### 环境说明
-- mongodb  admin/Rw123456
-- mysql 5.7  账号密码：root/root
+- mongodb 
+- mysql 5.7
 - zookeeper 3.4+
 - redis 3.2+ 
-- minio  账号密码：rongdata/rongdata
+- minio
 
 ```
 # 本地测试环境 IP调整
 127.0.0.1	rongwan-eureka
-127.0.0.1   rongwan-mysql
+127.0.0.1 rongwan-mysql
 127.0.0.1	rongwan-zookeeper
 127.0.0.1	rongwan-redis
 127.0.0.1	rongwan-minio
