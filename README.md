@@ -28,7 +28,7 @@ rongwan-docker-dev-tools
 # 本地测试环境 IP调整
 
 127.0.0.1	rongwan-eureka
-127.0.0.1     rongwan-mysql
+127.0.0.1       rongwan-mysql
 127.0.0.1	rongwan-zookeeper
 127.0.0.1	rongwan-redis
 127.0.0.1	rongwan-minio
